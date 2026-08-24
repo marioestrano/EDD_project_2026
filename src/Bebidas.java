@@ -51,6 +51,11 @@ public class Bebidas extends Producto implements Descontable {
      */
     @Override
     public double aplicarDescuento(double porcentaje) {
+        // Si el porcentaje es negativo, lo ignoramos y devolvemos el precio normal
+        if (porcentaje < 0) {
+            return getPrecio();
+        }
+        
         double cantidadDescontada = (getPrecio() * porcentaje) / 100;
         return getPrecio() - cantidadDescontada;
     }
